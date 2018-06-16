@@ -1,10 +1,13 @@
 .main-nav {
     list-style: none;
-}
+}    
 
 .main-nav li {
     float: right;
     display: block;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-right: 2%;
 }
 
 .main-nav li a:link, .main-nav li a:visited {
