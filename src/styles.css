@@ -14,15 +14,9 @@ html {
     text-rendering: optimizeLegibility;
 }
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('/assets/img/bgImage.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.7)), url('/assets/img/bgImage.jpg');
     height: 100vh;
     width: auto;
     background-size: cover;
     background-position: center; 
-}
-
-.clearfix:after{
-    content : "";
-    display: table;
-    clear: both;
 }
