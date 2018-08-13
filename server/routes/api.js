@@ -1,9 +1,20 @@
 //dependencies:
 var express = require('express');
 var uniqid = require('uniqid');
+var multer = require('multer');
 var mongoose = require('mongoose');
+
 var router = express.Router();
 
+var storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './uploads/');
+    },
+    filename: function(cb,file,cb){
+        cb(null, file.originalname)
+    }
+});
+var upload = multer({storage: storage});
 //get models:
 
 var Status = require('../models/status');
@@ -12,7 +23,8 @@ Status.find(function(err, status){
 	res.json(status);
 	});
 });
-router.post('/status',(req,res,next)=>{
+router.post('/status',upload.single('postImage'),(req,res,next)=>{
+    console.log(req.file);
     let newStatus = new Status({
         name : req.body.name,
         user_id: mongoose.Types.ObjectId(),
