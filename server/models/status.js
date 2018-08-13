@@ -9,7 +9,8 @@ var StatusSchema = new mongoose.Schema({
     post_id: String ,
     text: String,
     likeCount:Number,
-    commentCount: Number
+    commentCount: Number,
+    post_image: {type: String, required: true}
 });
 
 const Status = module.exports = mongoose.model('tblstatus',StatusSchema);

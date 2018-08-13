@@ -42,6 +42,7 @@ app.use(cors());
 
 //body-parser
 app.use(bodyparser.json());
+app.use('/uploads', express.static('uploads')) ;
 
 //static files
 

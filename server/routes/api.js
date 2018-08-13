@@ -14,8 +14,26 @@ var storage = multer.diskStorage({
         cb(null, file.originalname)
     }
 });
-var upload = multer({storage: storage});
+//limiting file size
+// var fileFilter = (req,file, cb) => {
+//     if(file.minetype == 'image/jpeg'|| file.minetype == 'image/jpg' || file.minetype == 'image/png'){
+//        cb(null, true); 
+//    }else{
+//     cb(null, false);
+//    }
+    
+    
+// }
+// var upload = multer({storage: storage,
+//  limits: {
+//     fileSize: 1024 * 1024 * 5
+// },
+// fileFilter: fileFilter
+// });
+
+ var upload = multer({storage: storage});
 //get models:
+
 
 var Status = require('../models/status');
 router.get('/status', (req,res,next)=>{
@@ -31,8 +49,8 @@ router.post('/status',upload.single('postImage'),(req,res,next)=>{
         post_id : uniqid(), 
         text: req.body.text,
         likeCount : req.body.likeCount,
-        commentCount : req.body.commentCount
-    
+        commentCount : req.body.commentCount,
+        post_image: req.file.path
      });
     newStatus.save((err,status)=>{
         if(err)
