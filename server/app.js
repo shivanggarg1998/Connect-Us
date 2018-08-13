@@ -20,6 +20,8 @@ mongoose.connection.on('error',(err)=>{
         console.log('error is ' + err);
     }
 });
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.json());
 // const MongoClient = require('mongodb').MongoClient;
 //
 // // replace the uri string with your connection string.
@@ -46,10 +48,14 @@ app.use(bodyparser.json());
 app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/api',route);
+app.use('/api', require('./routes/api'));
  //testing
  app.get('/',(req,res)=>{
      res.send('foobar');
  });
+
+
+
 app.listen(port,() => {
 console.log('Server started at port :'+port);
 
